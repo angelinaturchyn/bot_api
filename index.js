@@ -27,7 +27,7 @@ bot.on("callback_query", function (query) {
         bot.answerCallbackQuery(query.id, "Sorry, '" + query.game_short_name + "' is not available.");
     } else {
         queries[query.id] = query;
-        let gameUrl =   "https://angelinaturchyn.github.io/bot_api/"
+        let gameUrl =  "https://git.heroku.com/stormy-retreat-28413.git"       //"https://angelinaturchyn.github.io/bot_api/"
         bot.answerCallbackQuery({
             callback_query_id: query.id,
             url: gameUrl
