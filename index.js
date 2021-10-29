@@ -6,17 +6,14 @@ const path = require('path');
 const token = '1953278747:AAHgr9UX-SbRLKZakVB9MVimtTidsd2QzBQ';
 const options = {polling: true};
 const bot = new TelegramBot(token, {polling: true});
-const port = process.env.PORT //|| 5000;
+const port =process.env.PORT || 5000;
 const gameName = 'OptionGame';
 const queries = {};
 
 ///const url = new URL(location.href);
 ///const playerid = url.searchParams.get("id");
 
-
 server.use(express.static(path.join(__dirname, 'public' )));  //
-
-
 
 
 bot.onText(/start|game/, (msg) => bot.sendGame(msg.from.id, gameName));
@@ -27,7 +24,8 @@ bot.on("callback_query", function (query) {
         bot.answerCallbackQuery(query.id, "Sorry, '" + query.game_short_name + "' is not available.");
     } else {
         queries[query.id] = query;
-        let gameUrl =  "https://angelinaturchyn.github.io/bot_api/"  // "https://git.heroku.com/stormy-retreat-28413.git"  
+        let gameUrl = "https://angelinaturchyn.github.io/telegram-front/"
+            //"https://git.heroku.com/stormy-retreat-28413.git"
         bot.answerCallbackQuery({
             callback_query_id: query.id,
             url: gameUrl
@@ -153,6 +151,8 @@ bot.onText(/\/love/, function onLoveText(msg) {
     };
     bot.sendMessage(msg.chat.id, 'Do you love me?', opts);
 });
+
+
 
 // // Submit highscore to Telegram
 // var xmlhttp = new XMLHttpRequest();
